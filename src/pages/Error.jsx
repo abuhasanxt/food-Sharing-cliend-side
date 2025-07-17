@@ -1,13 +1,12 @@
 import { useRouteError } from "react-router";
-import Header from "../components/Header";
 
+import errorImg from "../assets/error.jpg";
 const Error = () => {
   const error = useRouteError();
   console.log(error);
   return (
-    <div>
-      <Header></Header>
-      <div className="flex min-h-screen items-center justify-center">Error</div>
+    <div className="max-w-md mx-auto mt-20">
+      <img src={errorImg} alt="" />
     </div>
   );
 };

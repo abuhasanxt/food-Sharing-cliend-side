@@ -1,114 +1,90 @@
-import { useContext, useState } from "react";
-import { CgMenuMotion } from "react-icons/cg";
-import { RiMenuAddLine } from "react-icons/ri";
+import { useContext } from "react";
+import { CiMenuBurger } from "react-icons/ci";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../providers/AuthProvider";
+import logo from "../assets/logo.png";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isPageLoad, setisPageLoad] = useState(false);
-  const menu = [
-    {
-      name: "Home",
-      path: "/",
-    },
 
-    {
-      name: "Link",
-      path: "/link",
-    },
-  ];
+  const links = (
+    <>
+      <li>
+        <NavLink to="/" className="hover:underline">
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/link" className="hover:underline">
+          Link
+        </NavLink>
+      </li>
+    </>
+  );
   return (
-    <nav className="overflow-x-clip">
-      {user && (
-        <p className="text-center text-white bg-black py-2 bg-opacity-90">
-          Welcome Mr. {user?.displayName} ❤️‍🔥❤️‍🔥. Now You Can Watch All the
-          Recipies🍉🍉
-        </p>
-      )}
-      <div className="text-center bg-slate-400"></div>
-      <div className="w-11/12 mx-auto py-5 flex justify-between items-center relative">
-        <Link to="/" className="logo">
-          <span className="text-xl font-bold text-stone-700">
-            Auth 🍳 Template
-          </span>
-        </Link>
+    <div className="navbar bg-base-100 shadow-sm px-4 ">
+      {/* Left - Logo and name */}
+      <div className="navbar-start">
+        <div className="dropdown">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost text-xl lg:hidden"
+          >
+            <CiMenuBurger />
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 dark:bg-gray-800 rounded-box w-52 z-10"
+          >
+            {links}
+          </ul>
+        </div>
+        <img
+          className="hidden lg:block w-10 h-10 rounded mr-2"
+          src={logo}
+          alt="Logo"
+        />
+        <span className="font-bold text-lg">Food Sharing</span>
+      </div>
 
-        {/* menu-lg start */}
-        <ul className="hidden lg:flex items-center gap-5 ">
-          {menu.map((item) => (
-            <NavLink key={item.path} to={item.path}>
-              {item.name}
-            </NavLink>
-          ))}
-          {user && user?.email ? (
+      {/* Center - Menu Links */}
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">{links}</ul>
+      </div>
+
+      {/* Right Login */}
+      <div className="navbar-end flex items-center gap-3">
+        {/* Login Button */}
+        <div className="navbar-end">
+          {user ? (
             <>
-              <button className="cursor-pointer" onClick={logOut}>
-                Logout
-              </button>
+              <img
+                src={user.photoURL}
+                title={user.displayName}
+                alt="user"
+                className="w-12 h-12 rounded-full cursor-pointer"
+              />
+
+              <Link to="/login">
+                <button onClick={logOut} className="btn">
+                  Sign Out
+                </button>
+              </Link>
             </>
           ) : (
             <>
-              <NavLink to="/login">Login</NavLink>
-              <NavLink to="/registration">Register</NavLink>
+              <NavLink className="btn mr-1" to="/login">
+                Login
+              </NavLink>
+              <NavLink className="btn" to="/registration">
+                Register
+              </NavLink>{" "}
             </>
           )}
-        </ul>
-
-        <div className="lg:hidden ">
-          {!isMenuOpen ? (
-            <RiMenuAddLine
-              onClick={() => {
-                setIsMenuOpen(true);
-                setisPageLoad(true);
-              }}
-              className="text-2xl cursor-pointer"
-            ></RiMenuAddLine>
-          ) : (
-            <CgMenuMotion
-              onClick={() => setIsMenuOpen(false)}
-              className="text-2xl cursor-pointer"
-            ></CgMenuMotion>
-          )}
-
-          {
-            <ul
-              className={`flex animate__animated bg-white flex-col lg:hidden gap-5 absolute z-50 bg-opacity-70 w-full top-14  left-0 ${
-                isMenuOpen
-                  ? "animate__fadeInRight "
-                  : isPageLoad
-                  ? "animate__fadeOutRight flex "
-                  : "hidden"
-              } `}
-            >
-              {menu.map((item) => (
-                <NavLink
-                  className="border-b-2 hover:border-orange-500 transition duration-200
-                   "
-                  key={item.path}
-                  to={item.path}
-                >
-                  {item.name}
-                </NavLink>
-              ))}
-              {user && user?.email ? (
-                <>
-                  <button className="cursor-pointer" onClick={logOut}>
-                    Logout
-                  </button>
-                </>
-              ) : (
-                <>
-                  <NavLink to="/login">Login</NavLink>
-                  <NavLink to="/registration">Register</NavLink>
-                </>
-              )}
-            </ul>
-          }
         </div>
       </div>
-    </nav>
+    </div>
   );
 };
 

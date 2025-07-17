@@ -5,7 +5,7 @@ import Social from "../components/Social";
 import Title from "../components/Title";
 import { AuthContext } from "../providers/AuthProvider";
 
-import { useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import loginAnimation from "../assets/loginAnimation.json";
 
 const Login = () => {
@@ -21,8 +21,8 @@ const Login = () => {
     const pass = form.pass.value;
 
     signIn(email, pass)
-      .then((res) => {        
-  
+      .then((res) => {
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -65,14 +65,6 @@ const Login = () => {
                       placeholder="enter Password"
                     />
                   </div>
-                  <p className="text-end text-[13px] text-slate-500">
-                    forgot password?{" "}
-                  </p>
-                </div>
-
-                <div className=" p-1 flex gap-3 -mt-4">
-                  <input type="checkbox" name="remember me" className="" />
-                  Remember Me
                 </div>
 
                 <input
@@ -80,6 +72,12 @@ const Login = () => {
                   value="Login Now"
                   className="btn cursor-pointer"
                 />
+                <p>
+                  Don't have an account?{" "}
+                  <Link className="text-red-600 underline" to="/registration">
+                    Sign up
+                  </Link>
+                </p>
               </form>
             </div>
             <Social></Social>

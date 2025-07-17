@@ -1,7 +1,7 @@
 import Lottie from "lottie-react";
 import { useContext } from "react";
 import { BiEnvelope, BiImageAdd, BiKey, BiUser } from "react-icons/bi";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import happy from "../assets/happy.json";
 import Social from "../components/Social";
 import Title from "../components/Title";
@@ -95,13 +95,14 @@ const Register = () => {
                   />
                 </div>
 
-                
-
                 <input
                   type="submit"
                   value="Register Now"
                   className="btn cursor-pointer"
                 />
+                <p>
+                  Already have an account? <Link className="text-red-600 underline" to="/login">Login</Link>
+                </p>
               </form>
             </div>
             <Social></Social>
