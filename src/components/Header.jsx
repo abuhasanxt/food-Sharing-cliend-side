@@ -15,8 +15,8 @@ const Header = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/link" className="hover:underline">
-          Link
+        <NavLink to="/add-food" className="hover:underline">
+          Add Food
         </NavLink>
       </li>
     </>
