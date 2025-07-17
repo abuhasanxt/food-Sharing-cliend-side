@@ -19,6 +19,11 @@ const Header = () => {
           Add Food
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/available-food" className="hover:underline">
+          Available Foods
+        </NavLink>
+      </li>
     </>
   );
   return (
