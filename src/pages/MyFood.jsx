@@ -1,18 +1,25 @@
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
-import { motion } from "motion/react";
-import React, { useState } from "react";
-import { useEffect } from "react";
 import { FcBusinessman } from "react-icons/fc";
 import { Link } from "react-router";
+import { motion } from "motion/react";
 
-const AvailableFoods = () => {
+const MyFood = () => {
+  const { user } = useContext(AuthContext);
   const [foods, setFoods] = useState([]);
+  console.log("🚀 ~ MyFood ~ foods:", foods);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/available-food")
+      .get("http://localhost:5000/my-food", {
+        headers: {
+          Authorization: `Bearer ${user.accessToken}`,
+        },
+      })
       .then((res) => setFoods(res.data));
-  }, []);
+  }, [user]);
+
   return (
     <div>
       <motion.h2
@@ -22,7 +29,7 @@ const AvailableFoods = () => {
         }}
         className="text-center text-3xl font-bold"
       >
-        Available Foods
+        My Foods
       </motion.h2>
       <div className="grid grid-cols-1 md:grid-cols-2 p-4 lg:grid-cols-3 gap-5">
         {foods.map((food) => (
@@ -71,9 +78,15 @@ const AvailableFoods = () => {
                 <p className="text-sm text-gray-700">📝 {food.note}</p>
               )}
               <p>🟢Status: {food.status}</p>
-              <Link to={`/details/${food._id}`} className="btn">
-                View Details
-              </Link>
+              <div className="flex justify-between">
+                <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md transition duration-300">
+                  Update
+                </button>
+
+                <button className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-md transition duration-300">
+                  Delete
+                </button>
+              </div>
             </div>
           </div>
         ))}
@@ -82,4 +95,4 @@ const AvailableFoods = () => {
   );
 };
 
-export default AvailableFoods;
+export default MyFood;
