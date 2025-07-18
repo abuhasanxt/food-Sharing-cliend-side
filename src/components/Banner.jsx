@@ -1,5 +1,5 @@
 import animation from "../assets/cooking.json";
-
+import { motion } from "motion/react"
 import Lottie from "lottie-react";
 const Banner = () => {
   return (
@@ -18,7 +18,12 @@ const Banner = () => {
             <marquee direction="left">Share food, spread love.</marquee>
           </div>
 
-          <h2 className="text-3xl">Every meal be a favor</h2>
+          <motion.h2
+          animate={{
+          color: ["#ff5733", "#33ff33", "#DFFF00","#FFBF00"],
+          transition: { duration: 2, repeat: Infinity },
+        }}
+           className="text-3xl">Every meal be a favor</motion.h2>
         </div>
         <div className="max-w-[400px] ">
           <Lottie animationData={animation} loop={true} />

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import Banner from "../components/Banner";
 import { AuthContext } from "../providers/AuthProvider";
+import FeatureFoods from "./FeatureFoods";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
@@ -13,6 +14,7 @@ const Home = () => {
         </p>
       )}
       <Banner></Banner>
+      <FeatureFoods></FeatureFoods>
     </>
   );
 };

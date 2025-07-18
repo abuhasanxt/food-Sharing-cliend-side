@@ -4,27 +4,26 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { FcBusinessman } from "react-icons/fc";
 import { Link } from "react-router";
-
-const AvailableFoods = () => {
+const FeatureFoods = () => {
   const [foods, setFoods] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/available-food")
+      .get("http://localhost:5000/feature-food")
       .then((res) => setFoods(res.data));
   }, []);
   return (
     <div>
       <motion.h2
         animate={{
-          color: ["#ff5733", "#33ff33", "#8a33ff"],
+          color: ["#ff5733", "#33ff33", "#40E0D0"],
           transition: { duration: 2, repeat: Infinity },
         }}
-        className="text-center text-3xl font-bold"
+        className="text-center  text-3xl font-extrabold"
       >
-        Available Foods
+        Feature Foods
       </motion.h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-4">
         {foods.map((food) => (
           <div
             key={food._id}
@@ -78,8 +77,13 @@ const AvailableFoods = () => {
           </div>
         ))}
       </div>
+     <div className="text-center">
+         <Link className="btn btn-primary w-md" to="/available-food">
+        See All
+      </Link>
+     </div>
     </div>
   );
 };
 
-export default AvailableFoods;
+export default FeatureFoods;
