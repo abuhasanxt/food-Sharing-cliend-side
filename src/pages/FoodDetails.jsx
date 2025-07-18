@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router";
 import { FcBusinessman } from "react-icons/fc";
+import axios from "axios";
+import { AuthContext } from "../providers/AuthProvider";
 
 const FoodDetails = () => {
-  const food = useLoaderData();
 
+  const {user}=useContext(AuthContext);
+  const food = useLoaderData();
+const handleRequest=()=>{
+  axios
+      .patch(`http://localhost:5000/request/${food._id}`, {},{
+        headers: {
+          Authorization: `Bearer ${user.accessToken}`,
+        },
+      })
+      .then((res) => console.log(res.data));
+}
   return (
     <div>
       <h2 className="text-xl font-bold text-center">Food Details</h2>
@@ -45,7 +57,7 @@ const FoodDetails = () => {
           </p>
           {food.note && <p className="text-sm text-gray-700">📝 {food.note}</p>}
           <p>🟢Status: {food.status}</p>
-          <button className="btn">Requested</button>
+          <button onClick={handleRequest} className="btn">Requested</button>
         </div>
       </div>
     </div>
