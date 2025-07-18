@@ -11,6 +11,7 @@ import FoodDetails from "../pages/FoodDetails";
 import axios from "axios";
 import MyFood from "../pages/MyFood";
 import RequestedFoods from "../pages/RequestedFoods";
+import Update from "../pages/Update";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -33,6 +34,11 @@ const mainRoutes = createBrowserRouter([
             <AddFoods></AddFoods>
           </PrivateRoute>
         ),
+      },
+       {
+        path:'update/:id',
+        loader:({params})=>fetch(`http://localhost:5000/add-food/${params.id}`),
+        Component:Update
       },
       {
         path: "/request",

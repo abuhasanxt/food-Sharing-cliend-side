@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CiMenuBurger } from "react-icons/ci";
 import { Link, NavLink } from "react-router";
+import "./Navbar.css"
 import { AuthContext } from "../providers/AuthProvider";
 import logo from "../assets/logo.png";
 
