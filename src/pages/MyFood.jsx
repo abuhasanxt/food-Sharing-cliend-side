@@ -4,6 +4,7 @@ import axios from "axios";
 import { FcBusinessman } from "react-icons/fc";
 import { Link } from "react-router";
 import { motion } from "motion/react";
+import Swal from "sweetalert2";
 
 const MyFood = () => {
   const { user } = useContext(AuthContext);
@@ -20,6 +21,35 @@ const MyFood = () => {
       .then((res) => setFoods(res.data));
   }, [user]);
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:5000/add-food/${id}`)
+          .then((res) => {
+            if (res.data.deletedCount) {
+              setFoods((prevFoods) => prevFoods.filter((f) => f._id !== id));
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Food has been deleted.",
+                icon: "success",
+              });
+            }
+          })
+          .catch((error) => {
+            console.log("🚀 ~ handleDelete ~ error:", error);
+          });
+      }
+    });
+  };
   return (
     <div>
       <motion.h2
@@ -79,13 +109,16 @@ const MyFood = () => {
               )}
               <p>🟢Status: {food.status}</p>
               <div className="flex justify-between">
-               <Link to={`/update/${food._id}`}>
-                <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md transition duration-300">
-                  Update
-                </button>
-               </Link>
+                <Link to={`/update/${food._id}`}>
+                  <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 cursor-pointer text-white rounded-lg shadow-md transition duration-300">
+                    Update
+                  </button>
+                </Link>
 
-                <button className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-md transition duration-300">
+                <button
+                  onClick={() => handleDelete(food._id)}
+                  className="px-4 py-2 bg-red-600 hover:bg-red-700 cursor-pointer text-white rounded-lg shadow-md transition duration-300"
+                >
                   Delete
                 </button>
               </div>
