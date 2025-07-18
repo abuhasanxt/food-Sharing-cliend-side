@@ -10,6 +10,7 @@ import AvailableFoods from "../pages/AvailableFoods";
 import FoodDetails from "../pages/FoodDetails";
 import axios from "axios";
 import MyFood from "../pages/MyFood";
+import RequestedFoods from "../pages/RequestedFoods";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -30,6 +31,14 @@ const mainRoutes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddFoods></AddFoods>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/request",
+        element: (
+          <PrivateRoute>
+            <RequestedFoods></RequestedFoods>
           </PrivateRoute>
         ),
       },
