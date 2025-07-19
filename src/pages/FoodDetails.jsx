@@ -10,7 +10,7 @@ const FoodDetails = () => {
   const food = useLoaderData();
 const handleRequest=()=>{
   axios
-      .patch(`http://localhost:5000/request/${food._id}`, {},{
+      .patch(`https://assingment-11-eb695.web.app/request/${food._id}`, {},{
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },

@@ -10,7 +10,7 @@ const AvailableFoods = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/available-food")
+      .get("https://assingment-11-eb695.web.app/available-food")
       .then((res) => setFoods(res.data));
   }, []);
   return (

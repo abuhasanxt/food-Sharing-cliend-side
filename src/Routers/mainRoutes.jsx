@@ -37,7 +37,7 @@ const mainRoutes = createBrowserRouter([
       },
        {
         path:'update/:id',
-        loader:({params})=>fetch(`http://localhost:5000/add-food/${params.id}`),
+        loader:({params})=>fetch(`https://assingment-11-eb695.web.app/add-food/${params.id}`),
         Component:Update
       },
       {
@@ -60,7 +60,7 @@ const mainRoutes = createBrowserRouter([
         path: "/details/:foodId",
         loader: async ({ params }) => {
           const { data } = await axios.get(
-            `http://localhost:5000/details/${params.foodId}`
+            `https://assingment-11-eb695.web.app/details/${params.foodId}`
           );
           return data;
         },

@@ -13,7 +13,7 @@ const MyFood = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/my-food", {
+      .get("https://assingment-11-eb695.web.app/my-food", {
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },
@@ -33,7 +33,7 @@ const MyFood = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/add-food/${id}`)
+          .delete(`https://assingment-11-eb695.web.app/add-food/${id}`)
           .then((res) => {
             if (res.data.deletedCount) {
               setFoods((prevFoods) => prevFoods.filter((f) => f._id !== id));

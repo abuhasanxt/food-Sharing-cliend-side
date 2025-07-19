@@ -13,7 +13,7 @@ const Update = () => {
     const updatedFood = Object.fromEntries(formData.entries());
     console.log(updatedFood);
 
-    fetch(`http://localhost:5000/add-food/${_id}`, {
+    fetch(`https://assingment-11-eb695.web.app/add-food/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

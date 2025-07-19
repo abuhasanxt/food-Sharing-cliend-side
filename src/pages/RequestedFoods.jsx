@@ -11,7 +11,7 @@ const RequestedFoods = () => {
   useEffect(() => {
     if (user?.accessToken) {
       axios
-        .get("http://localhost:5000/request", {
+        .get("https://assingment-11-eb695.web.app/request", {
           headers: {
             Authorization: `Bearer ${user.accessToken}`,
           },

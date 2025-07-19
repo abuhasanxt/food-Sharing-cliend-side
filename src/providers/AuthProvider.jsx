@@ -60,7 +60,7 @@ const AuthProvider = ({ children }) => {
       console.log("🚀 ~ unsubscribe ~ currentUser:", currentUser);
       setUser(currentUser);
 
-      axios.get("http://localhost:5000", {
+      axios.get("https://assingment-11-eb695.web.app/", {
         headers: {
           Authorization: `Bearer ${currentUser.accessToken}`,
         },
