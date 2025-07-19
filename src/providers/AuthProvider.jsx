@@ -12,6 +12,7 @@ import {
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export const AuthContext = createContext();
 
@@ -31,6 +32,7 @@ const AuthProvider = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
 
   const googleSignIn = () => {
+  
     return signInWithPopup(auth, googleProvider);
   };
 
@@ -43,6 +45,13 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
+     Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Log Out Successful",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     return signOut(auth);
   };
 

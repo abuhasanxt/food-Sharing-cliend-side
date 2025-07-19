@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import { FcBusinessman } from "react-icons/fc";
 import axios from "axios";
 import { AuthContext } from "../providers/AuthProvider";
@@ -61,7 +61,7 @@ const handleRequest=()=>{
           </p>
           {food.note && <p className="text-sm text-gray-700">📝 {food.note}</p>}
           <p>🟢Status: {food.status}</p>
-          <button onClick={handleRequest} className="btn">Requested</button>
+          <Link to='/request' onClick={handleRequest} className="btn">Requested</Link>
         </div>
       </div>
     </div>

@@ -7,13 +7,14 @@ import { AuthContext } from "../providers/AuthProvider";
 
 import { Link, useLocation, useNavigate } from "react-router";
 import loginAnimation from "../assets/loginAnimation.json";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const location = useLocation();
 
   const navigate = useNavigate();
-  console.log(location);
+  console.log(location.pathname);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,6 +24,14 @@ const Login = () => {
     signIn(email, pass)
       .then((res) => {
         console.log(res);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(location?.state || "/");
       })
       .catch((err) => {
         console.log(err);

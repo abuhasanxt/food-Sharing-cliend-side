@@ -6,11 +6,14 @@ import happy from "../assets/happy.json";
 import Social from "../components/Social";
 import Title from "../components/Title";
 import { AuthContext } from "../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const goTo = useNavigate();
   const { createUser, signIn, user, setUser, updateUser } =
     useContext(AuthContext);
+  console.log("🚀 ~ Register ~ user:", user);
+  console.log("🚀 ~ Register ~ signIn:", signIn);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,6 +26,13 @@ const Register = () => {
 
     createUser(email, pass)
       .then((res) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Registration Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         updateUser({ displayName: name }).then(() => {
           setUser({ ...res.user, displayName: name, photoURL: image });
           goTo(`${location.state ? location.state : "/"}`);
@@ -101,7 +111,10 @@ const Register = () => {
                   className="btn cursor-pointer"
                 />
                 <p>
-                  Already have an account? <Link className="text-red-600 underline" to="/login">Login</Link>
+                  Already have an account?{" "}
+                  <Link className="text-red-600 underline" to="/login">
+                    Login
+                  </Link>
                 </p>
               </form>
             </div>

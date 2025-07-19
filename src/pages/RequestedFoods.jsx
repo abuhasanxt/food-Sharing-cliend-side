@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../providers/AuthProvider";
 import { FcBusinessman } from "react-icons/fc";
+import { Link } from "react-router";
 
 const RequestedFoods = () => {
   const { user } = useContext(AuthContext);
@@ -28,7 +29,10 @@ const RequestedFoods = () => {
         📋 Requested Foods
       </h2>
       {foods.length === 0 ? (
-        <p className="text-gray-500">No requested foods yet.</p>
+        <div className="text-center space-y-4">
+            <p className="text-gray-500 text-xl">No requested foods yet.</p>
+            <Link to='/available-food' className="btn btn-primary w-sm">Food Request</Link>
+        </div>
       ) : (
         <div className="grid md:grid-cols-2 gap-6">
           {foods.map((food) => (
