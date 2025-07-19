@@ -36,7 +36,7 @@ const AddFoods = () => {
     };
     console.log("Form Data Submitted:");
 
-    axios.post("http://localhost:5000/add-food", data).then((res) => {
+    axios.post("https://assingment-11-eb695.web.app/add-food", data).then((res) => {
       if (res.data.insertedId) {
         console.log("🚀 ~ handleSubmit ~ res:", res.data);
         Swal.fire({
