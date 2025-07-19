@@ -60,7 +60,7 @@ const AuthProvider = ({ children }) => {
       console.log("🚀 ~ unsubscribe ~ currentUser:", currentUser);
       setUser(currentUser);
 
-      axios.get("https://assingment-11-eb695.web.app/", {
+      axios.get("https://mission-scic11-server-template-ecru.vercel.app/", {
         headers: {
           Authorization: `Bearer ${currentUser.accessToken}`,
         },

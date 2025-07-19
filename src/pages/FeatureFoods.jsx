@@ -6,10 +6,11 @@ import { FcBusinessman } from "react-icons/fc";
 import { Link } from "react-router";
 const FeatureFoods = () => {
   const [foods, setFoods] = useState([]);
+  console.log("🚀 ~ FeatureFoods ~ foods:", foods);
 
   useEffect(() => {
     axios
-      .get("https://assingment-11-eb695.web.app/feature-food")
+      .get("https://mission-scic11-server-template-ecru.vercel.app/feature-food")
       .then((res) => setFoods(res.data));
   }, []);
   return (
@@ -77,11 +78,11 @@ const FeatureFoods = () => {
           </div>
         ))}
       </div>
-     <div className="text-center">
-         <Link className="btn btn-primary w-md" to="/available-food">
-        See All
-      </Link>
-     </div>
+      <div className="text-center">
+        <Link className="btn btn-primary w-md" to="/available-food">
+          See All
+        </Link>
+      </div>
     </div>
   );
 };

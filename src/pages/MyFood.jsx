@@ -13,7 +13,7 @@ const MyFood = () => {
 
   useEffect(() => {
     axios
-      .get("https://assingment-11-eb695.web.app/my-food", {
+      .get("https://mission-scic11-server-template-ecru.vercel.app/my-food", {
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },
@@ -33,7 +33,7 @@ const MyFood = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`https://assingment-11-eb695.web.app/add-food/${id}`)
+          .delete(`https://mission-scic11-server-template-ecru.vercel.app/add-food/${id}`)
           .then((res) => {
             if (res.data.deletedCount) {
               setFoods((prevFoods) => prevFoods.filter((f) => f._id !== id));

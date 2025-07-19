@@ -11,7 +11,7 @@ const RequestedFoods = () => {
   useEffect(() => {
     if (user?.accessToken) {
       axios
-        .get("https://assingment-11-eb695.web.app/request", {
+        .get("https://mission-scic11-server-template-ecru.vercel.app/request", {
           headers: {
             Authorization: `Bearer ${user.accessToken}`,
           },

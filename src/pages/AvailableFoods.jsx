@@ -10,7 +10,7 @@ const AvailableFoods = () => {
 
   useEffect(() => {
     axios
-      .get("https://assingment-11-eb695.web.app/available-food")
+      .get("https://mission-scic11-server-template-ecru.vercel.app/available-food")
       .then((res) => setFoods(res.data));
   }, []);
   return (

@@ -37,7 +37,7 @@ const mainRoutes = createBrowserRouter([
       },
        {
         path:'update/:id',
-        loader:({params})=>fetch(`https://assingment-11-eb695.web.app/add-food/${params.id}`),
+        loader:({params})=>fetch(`https://mission-scic11-server-template-ecru.vercel.app/add-food/${params.id}`),
         Component:Update
       },
       {
@@ -60,7 +60,7 @@ const mainRoutes = createBrowserRouter([
         path: "/details/:foodId",
         loader: async ({ params }) => {
           const { data } = await axios.get(
-            `https://assingment-11-eb695.web.app/details/${params.foodId}`
+            `https://mission-scic11-server-template-ecru.vercel.app/details/${params.foodId}`
           );
           return data;
         },
