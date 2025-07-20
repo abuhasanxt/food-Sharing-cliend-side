@@ -71,6 +71,8 @@ const Login = () => {
                       className="outline-none flex-1 border-b-2 p-2 bg-transparent focus:border-orange-400 transition-all  duration-200"
                       type="password"
                       name="pass"
+                      pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$"
+                      title="Password must be at least 6 characters and include uppercase, lowercase, and a number."
                       placeholder="enter Password"
                     />
                   </div>
