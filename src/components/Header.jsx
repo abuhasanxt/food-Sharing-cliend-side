@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { CiMenuBurger } from "react-icons/ci";
 import { Link, NavLink } from "react-router";
-import "./Navbar.css"
+import "./Navbar.css";
 import { AuthContext } from "../providers/AuthProvider";
 import logo from "../assets/logo.png";
 
@@ -15,30 +15,63 @@ const Header = () => {
           Home
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/add-food" className="hover:underline">
-          Add Food
-        </NavLink>
-      </li>
+
       <li>
         <NavLink to="/available-food" className="hover:underline">
           Available Foods
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/my-food" className="hover:underline">
-          My Foods
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/request" className="hover:underline">
-          My Request
-        </NavLink>
-      </li>
+
+      {user && (
+        <li tabIndex={0} className="dropdown">
+          <label className="btn btn-ghost rounded-btn">
+            Dashboard{" "}
+            <svg
+              className="ml-1 w-4 h-4 inline"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <NavLink to="/dashboard/profile" className="hover:underline">
+                Profile
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/add-food" className="hover:underline">
+                Add Food
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/my-food" className="hover:underline">
+                My Foods
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/request" className="hover:underline">
+                My Request
+              </NavLink>
+            </li>
+          </ul>
+        </li>
+      )}
     </>
   );
   return (
-    <div className="navbar bg-base-100 shadow-sm px-4 ">
+    <div className="navbar bg-base-100 fixed top-0 w-full z-50 shadow-sm ">
       {/* Left - Logo and name */}
       <div className="navbar-start">
         <div className="dropdown">

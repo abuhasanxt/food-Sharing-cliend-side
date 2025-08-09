@@ -35,10 +35,13 @@ const mainRoutes = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-       {
-        path:'update/:id',
-        loader:({params})=>fetch(`https://mission-scic11-server-template-ecru.vercel.app/add-food/${params.id}`),
-        Component:Update
+      {
+        path: "update/:id",
+        loader: ({ params }) =>
+          fetch(
+            `https://mission-scic11-server-template-ecru.vercel.app/add-food/${params.id}`
+          ),
+        Component: Update,
       },
       {
         path: "/request",
@@ -64,11 +67,7 @@ const mainRoutes = createBrowserRouter([
           );
           return data;
         },
-        element: (
-          <PrivateRoute>
-            <FoodDetails></FoodDetails>
-          </PrivateRoute>
-        ),
+        element: <FoodDetails></FoodDetails>,
       },
       {
         path: "login",

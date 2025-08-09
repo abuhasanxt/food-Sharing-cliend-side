@@ -62,7 +62,7 @@ const AuthProvider = ({ children }) => {
 
       axios.get("https://mission-scic11-server-template-ecru.vercel.app/", {
         headers: {
-          Authorization: `Bearer ${currentUser.accessToken}`,
+          Authorization: `Bearer ${currentUser?.accessToken}`,
         },
       });
 
