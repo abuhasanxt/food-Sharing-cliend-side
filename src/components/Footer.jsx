@@ -25,16 +25,15 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
             <ul className="space-y-2 text-sm text-gray-300">
               <li>
-                <Link className="hover:underline">Terms of service</Link>
+                <Link to="/" className="hover:underline">
+                  {" "}
+                  Home
+                </Link>
               </li>
               <li>
-                <Link className="hover:underline">Privacy Policy</Link>
-              </li>
-              <li>
-                <Link className="hover:underline">Donate Food</Link>
-              </li>
-              <li>
-                <Link className="hover:underline">Request Food</Link>
+                <Link to="/available-food" className="hover:underline">
+                  Available Foods
+                </Link>
               </li>
             </ul>
           </div>
