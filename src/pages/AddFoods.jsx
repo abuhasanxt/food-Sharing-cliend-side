@@ -52,7 +52,7 @@ const AddFoods = () => {
   };
 
   return (
-    <div className="mt-5">
+    <div className="min-h-screen mt-20">
       <form
         onSubmit={handleSubmit}
         className="max-w-xl mx-auto p-6 bg-white rounded-xl shadow-md space-y-6"

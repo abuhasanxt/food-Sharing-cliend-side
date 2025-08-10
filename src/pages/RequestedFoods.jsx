@@ -24,7 +24,7 @@ const RequestedFoods = () => {
   }, [user]);
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="min-h-screen mt-20">
       <h2 className="text-2xl text-center font-bold mb-4">
         📋 Requested Foods
       </h2>
