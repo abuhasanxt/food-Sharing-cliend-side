@@ -1,10 +1,18 @@
 import React, { Suspense } from 'react';
 import Food from './Food';
-
+import { motion } from "motion/react";
 const Foods = ({data}) => {
     return (
         <div>
-      <h2 className="text-2xl font-bold text-center my-5">Foods</h2>
+      <motion.h2
+        animate={{
+          color: ["#ff5733", "#33ff33", "#8a33ff"],
+          transition: { duration: 2, repeat: Infinity },
+        }}
+        className="text-center text-3xl font-bold"
+      >
+        Foods
+      </motion.h2>
 
       <Suspense
         fallback={<span className="loading loading-bars loading-xl"></span>}

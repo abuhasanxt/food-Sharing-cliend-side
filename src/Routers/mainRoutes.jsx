@@ -12,6 +12,7 @@ import axios from "axios";
 import MyFood from "../pages/MyFood";
 import RequestedFoods from "../pages/RequestedFoods";
 import Update from "../pages/Update";
+import Profile from "../pages/Profile";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -56,6 +57,14 @@ const mainRoutes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyFood></MyFood>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
           </PrivateRoute>
         ),
       },

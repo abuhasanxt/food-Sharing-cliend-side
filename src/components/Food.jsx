@@ -6,7 +6,7 @@ const Food = ({singleFood}) => {
         <div className='p-3'>
       <div className="card bg-base-100 w-full shadow-sm dark:bg-gray-900 dark:text-white">
    
-         <figure className=" avatar rounded-full">
+         <figure className=" avatar  h-48">
           <img
             src={photo}
             alt="Shoes"

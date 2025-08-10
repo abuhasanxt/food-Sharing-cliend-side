@@ -30,8 +30,10 @@ const RequestedFoods = () => {
       </h2>
       {foods.length === 0 ? (
         <div className="text-center space-y-4">
-            <p className="text-gray-500 text-xl">No requested foods yet.</p>
-            <Link to='/available-food' className="btn btn-primary w-sm">Food Request</Link>
+          <p className="text-gray-500 text-xl">No requested foods yet.</p>
+          <Link to="/available-food" className="btn btn-primary w-sm">
+            Food Request
+          </Link>
         </div>
       ) : (
         <div className="grid md:grid-cols-2 gap-6">
@@ -43,7 +45,7 @@ const RequestedFoods = () => {
               <img
                 src={food.img}
                 alt="photo"
-                className=" w-full object-cover"
+                className=" w-full h-48 object-cover"
               />
               <div className="p-4 space-y-2">
                 <div className="flex items-center gap-1">
