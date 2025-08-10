@@ -15,7 +15,7 @@ const MyFood = () => {
     axios
       .get("https://mission-scic11-server-template-ecru.vercel.app/my-food", {
         headers: {
-          Authorization: `Bearer ${user.accessToken}`,
+          Authorization: `Bearer ${user?.accessToken}`,
         },
       })
       .then((res) => setFoods(res.data));
