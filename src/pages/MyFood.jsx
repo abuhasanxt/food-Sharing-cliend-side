@@ -79,7 +79,7 @@ const MyFood = () => {
               <img
                 src={food.img}
                 alt="photo"
-                className=" w-full object-cover"
+                className=" w-full h-48 object-cover"
               />
               <div className="p-4 space-y-2">
                 <div className="flex items-center gap-1">
